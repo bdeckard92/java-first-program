@@ -9,8 +9,8 @@ public class SavingsCalculator  {
     private float[] debits;
 
     public SavingsCalculator(float[] credits, float[] debits) {
-        credits = this.credits;
-        debits = this.debits;
+        this.credits = credits;
+         this.debits = debits;
     }
 
     private float sumOfCredits(){
@@ -35,6 +35,15 @@ public class SavingsCalculator  {
         int totalDaysInMonth = yearMonth.lengthOfMonth();
         int remainingDaysInMonth = totalDaysInMonth - date.getDayOfMonth();
         return remainingDaysInMonth;
+
+    }
+
+    public float calculate(){
+        return sumOfCredits() - sumOfDebits();
+    }
+
+    public static void main(String[] args){
+
 
     }
 
