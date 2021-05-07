@@ -1,5 +1,7 @@
 package com.h2;
 
+import java.text.DecimalFormat;
+
 public class MortgageCalculator {
     private long loanAmount;
     private int termInYears;
@@ -19,6 +21,20 @@ public class MortgageCalculator {
     private float getMonthlyInterestRate(){
         float interestRate = annualRate/100;
         return interestRate/12;
+    }
+
+    public void calculateMonthlyPayment(){
+        long P = loanAmount;
+        int n = getNumberOfPayments();
+        float r = getMonthlyInterestRate();
+
+        double M = P * ((r * (Math.pow((1 + r), n))) / ((Math.pow((1 + r), n))-1));
+        this.monthlyPayment = M;
+    }
+
+    public String toString(){
+        DecimalFormat df = new DecimalFormat("####0.00");
+        return "monthlyPaymet: " + df.format(monthlyPayment);
     }
 
 
